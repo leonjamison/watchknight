@@ -18,9 +18,9 @@ const content = [image1, image2, image3, image4, image5, image6]
 
 const Movielist = ({ category, setActive }) => {
 
-    const getPos = useCallback(e => {
-        const pos = e.target.parentElement.getBoundingClientRect()
-        setActive({ category, pos })
+    const getPosition = useCallback(e => {
+        const position = e.target.parentElement.getBoundingClientRect()
+        setActive({ category, position })
          // eslint-disable-next-line 
       }, [])
 
@@ -57,7 +57,7 @@ const Movielist = ({ category, setActive }) => {
               {content.map(img => (
                 <Movie key={img} img={img}>
                   <Icon type="play" />
-                  <Icon type="info-circle" onClick={getPos} />
+                  <Icon type="info-circle" onClick={getPosition} />
                 </Movie>
               ))}
             </div>

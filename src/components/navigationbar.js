@@ -1,15 +1,19 @@
 /** @jsx jsx */
  // eslint-disable-next-line 
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, forwardRef } from 'react'
 import { css, jsx } from '@emotion/core'
 import logo from '../img/logo.png'
+// import { Link, Route } from 'react-router-dom'
+// import Search from './search'
+import Icon from './icon'
 
 const leftLinks = ['Home', 'Series', 'Movies', 'Latest', 'Favorites']
 
+
 /**
- * @function Navbar
+ * @function Navigationbar
  */
-const Navbar = () => {
+const Navigationbar = forwardRef((props, ref) => {
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
@@ -23,55 +27,55 @@ const Navbar = () => {
     }
   }, [])
 
+
+
   return (
     <nav
-      css={[
-        NavbarCSS,
-        scrolled
-          ? css`
-              background-color: rgb(20, 20, 20);
-              background-image: linear-gradient(
-                to bottom,
-                rgba(0, 0, 0, 0.7) 10%,
-                rgba(0, 0, 0, 0)
-              );
-            `
-          : css`
-              background: transparent;
-            `
-      ]}
-    >
-      <ul>
-        <ul>
-          <a href="/">
-            <img alt='' height="150" src={logo} />
-          </a>
-        </ul>
+    ref={ref}
+    css={[
+      NavigationbarCSS,
+      scrolled
+        ? css`
+            background-color: rgb(20, 20, 20);
+            background-image: linear-gradient(
+              to bottom,
+              rgba(0, 0, 0, 0.7) 10%,
+              rgba(0, 0, 0, 0)
+            );
+          `
+        : css`
+            background: transparent;
+          `
+    ]}
+  >
+    <ul>
+      <li>
+        <a href="/">
+          <img alt='' height="175" src={logo} />
+        </a>
+      </li>
 
-        {leftLinks.map(link => (
-          <li key={link}>
-            <a href="/">{link}</a>
-          </li>
-        ))}
-      </ul>
-
-      <ul className="right">
-        <li>
-          <a href="/">
-            <i className="fa fa-search" aria-hidden="true"></i>
-          </a>
+      {leftLinks.map(link => (
+        <li key={link}>
+          <a href="/">{link}</a>
         </li>
-        <li>
-          <a href="/">
-            <i className="fa fa-bell-o" aria-hidden="true"></i>
-          </a>
-        </li>
-      </ul>
-    </nav>
-  )
-}
+      ))}
+    </ul>
 
-const NavbarCSS = css`
+    <ul className="right">
+      <li>
+        <Icon type="search" />
+      </li>
+      <li>
+        <Icon type="bell-o" />
+      </li>
+    </ul>
+  </nav>
+)
+})
+
+
+const NavigationbarCSS = css`
   position: fixed;
   height: 68px;
   z-index: 99;
@@ -108,4 +112,4 @@ const NavbarCSS = css`
   }
 `
 
-export default Navbar
+export default Navigationbar

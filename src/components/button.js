@@ -3,8 +3,8 @@
 import React from 'react'
 import { jsx } from '@emotion/core'
 
-const Button = ({ children, type, icon }) => (
-  <button type={type}>
+const Button = ({ children, type, icon, onClick }) => (
+  <button type={type} onClick={onclick}>
     {icon && <i className={`fa fa-${icon}`}></i>}
     {children}
   </button>
@@ -12,7 +12,8 @@ const Button = ({ children, type, icon }) => (
 
 Button.defaultProps = {
   type: 'button',
-  icon: null
+  icon: null,
+  onClick: null
 }
 
 export default Button

@@ -5,74 +5,50 @@ import React from 'react';
 import { css, jsx } from '@emotion/core'
 import Button from './button'
 import image6 from '../img/image6.png'
-// import logo from '../img/logo.png'
+import ReactPlayer from 'react-player'
 
 
-// import Movielist from './movielist'
-
-// const movie_db = `https://api.themoviedb.org/3/movie/popular?api_key=e3c60fe73b55ea565cfda63e0c2faca6&language=en-US&page=1`
-
-// const backend_api = `http://localhost:3001`
-
-// class Homepage extends Component{
-
-//     state={
-//         movies: [],
-//         reviews:[]
-//     }
+const url = `https://www.youtube.com/watch?v=SJpgohJLMGg`
 
 
-//     componentDidMount(){
-//         this.getMovies()
-//         this.getReviews()
-//     }
 
-//     //Functions to fetch data
-//     getMovies=()=>{
-//         fetch(`${backend_api}/movies`)
-//         .then(r => r.json())
-//         .then(movies => this.setState({movies: movies}))
-//     }
-
-//     getReviews=()=>{
-//         fetch(`${backend_api}/reviews`)
-//         .then(r => r.json())
-//         .then(reviews => this.setState({reviews: reviews}))
-//     }
-
-
-//     render(){
-//         // console.log('homepage state:', this.state)
-//         return(
-//             // <>
-                
-//             //     <Movielist movies={this.state.movies}/>
-
-                
-//             // </>
-          
-//         )
-
-//     }
 
 
     const homepage = ({children}) => (
         <div css={homepageCSS}>
+          
           <div className="synopsis">
-            {/* <img alt='' src={logo} /> */}
-      
+          
+          <div className='player-wrapper'>
+          <ReactPlayer
+          className='react-player'
+          url={url}
+          volume={1}
+          muted={true}
+          playing= {true}
+          controls={true}
+          width='100%'
+          height='350%'
+          loop={true}
+          
+        />
+      </div>
             <p>
             With the world now aware of his identity as Iron Man, 
             Tony Stark must contend with both his declining health and a vengeful mad man with ties to his father's legacy.
             </p>
-      
-            <Button Icon="play"> Play</Button>
-            <Button Icon="info-circle"> More Info</Button>
+
+            <Button icon="play"> Play</Button>
+            <Button icon="info-circle"> More Info</Button>
           </div>
 
             {children}
         </div>
+          
       )
+
+    
+  
 
   const homepageCSS = css`
   position: relative;
@@ -81,13 +57,12 @@ import image6 from '../img/image6.png'
   background-size: cover;
   width: 100%;
   height: 98vh;
-  padding-left: 40px;
   top: 0;
 
   .synopsis {
-    padding-top: 200px;
+    padding-top: 140px;
     padding-left: 60px;
-    max-width: 500px;
+    max-width: 600px;
     color: white;
 
     img {
@@ -102,6 +77,18 @@ import image6 from '../img/image6.png'
       position: absolute;
       bottom: 20px;
     }
+    .player-wrapper {
+      position: relative;
+      padding-top: 15% /* Player ratio: 100 / (1280 / 720) */
+  
+    }
+     
+    .react-player {
+      position: absolute;
+      top: 0;
+      left: 115%;
+    }
+
 `
        
     

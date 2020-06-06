@@ -1,43 +1,38 @@
 // import React from 'react';
-import './App.css';
 import { Global, css} from '@emotion/core'
 import Homepage from './components/homepage'
 import Navigationbar from './components/navigationbar'
 import Movielist from './components/movielist'
 import React, { useState, useEffect, createRef } from 'react'
 import Footer from './components/footer.js'
+import Detailpane from './components/DetailPane/detailpane'
+
+
+
 
 const initialRow = {
   category: '',
-  pos: { top: 0, bottom: 0 }
+  position: { top: 0, bottom: 0 }
 }
 
 const categories = [
-  'Popular on WatchKnight',
+  'Top Picks on WatchKnight',
   'Action',
   'Drama',
   'Comedy',
-  'Documentary',
-  'Sci-Fi',
-  'Romance'
+  'Documentary'
+  // 'Sci-Fi',
+  // 'Romance'
 ]
 
 
 const App = () => {
   const [activeRow, setActiveRow] = useState(initialRow)
 
-  const {
-    category,
-    pos: { top}
-  } = activeRow
+  const { category, position: {top, bottom} } = activeRow
 
   const navRef = createRef()
 
-  const setActive = activeRow => {
-    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
-  }
-
- 
   useEffect(() => {
     if (!category) return
     const navHeight = navRef.current.offsetHeight
@@ -47,17 +42,22 @@ const App = () => {
       left: 0,
       behavior: 'smooth'
     })
-     // eslint-disable-next-line 
-  }, [category])
+  }, )
 
+  const setActive = activeRow => {
+    activeRow.category ? setActiveRow(activeRow) : setActiveRow(initialRow)
+  }
+
+ 
 
   return (
 
-
     <>
       <Global styles={GlobalCSS} />
-      <Navigationbar />
-      {/* ref={navRef} */}
+      <Navigationbar ref={navRef} />
+      
+
+
       <Homepage >
         <Movielist category={categories[0]} setActive={setActive}/>
       </Homepage >
@@ -65,6 +65,11 @@ const App = () => {
       {categories.slice(1).map(category => (
         <Movielist key={category} category={category} setActive={setActive} />
       ))}
+         <Detailpane
+          category={category}
+          top={bottom + window.scrollY}
+          setActive={setActive}
+      />
 
       <Footer />
    
@@ -117,6 +122,8 @@ const GlobalCSS = css`
     cursor: pointer;
     color: white;
   }
+
+
 `
 
 export default App;

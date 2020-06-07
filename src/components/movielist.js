@@ -16,6 +16,8 @@ const content = [image1, image2, image3, image4, image5, image6]
 
 
 
+
+
 const Movielist = ({ category, setActive }) => {
 
     const getPosition = useCallback(e => {
@@ -41,6 +43,7 @@ const Movielist = ({ category, setActive }) => {
           <div
             css={css`
               h2 {
+                font-size: 24px;
                 margin: 20px 0 10px;
                 color: white;
               }

@@ -60,7 +60,7 @@ const url = `https://www.youtube.com/watch?v=SJpgohJLMGg`
   top: 0;
 
   .synopsis {
-    padding-top: 140px;
+    padding-top: 115px;
     padding-left: 60px;
     max-width: 600px;
     color: white;
@@ -75,7 +75,7 @@ const url = `https://www.youtube.com/watch?v=SJpgohJLMGg`
     }
     .ContentRow {
       position: absolute;
-      bottom: 20px;
+      bottom: 10px;
     }
     .player-wrapper {
       position: relative;

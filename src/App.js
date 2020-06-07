@@ -7,6 +7,8 @@ import React, { useState, useEffect, createRef } from 'react'
 import Footer from './components/footer.js'
 import Detailpane from './components/DetailPane/detailpane'
 
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+// import Searchresults from './components/searchresults'
 
 
 
@@ -19,8 +21,8 @@ const categories = [
   'Top Picks on WatchKnight',
   'Action',
   'Drama',
-  'Comedy',
-  'Documentary'
+  'Comedy'
+  // 'Documentary'
   // 'Sci-Fi',
   // 'Romance'
 ]
@@ -51,7 +53,8 @@ const App = () => {
  
 
   return (
-
+    
+ 
     <>
       <Global styles={GlobalCSS} />
       <Navigationbar ref={navRef} />
@@ -72,10 +75,11 @@ const App = () => {
       />
 
       <Footer />
-   
-    </>
+      </>
+    
   )
 }
+
 
 const GlobalCSS = css`
   * {

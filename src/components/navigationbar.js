@@ -3,11 +3,12 @@
 import React, { useState, useEffect, forwardRef } from 'react'
 import { css, jsx } from '@emotion/core'
 import logo from '../img/logo.png'
-// import { Link, Route } from 'react-router-dom'
-// import Search from './search'
+import { Link } from 'react-router-dom'
 import Icon from './icon'
 
+
 const leftLinks = ['Home', 'Series', 'Movies', 'Latest', 'Favorites']
+
 
 
 /**
@@ -30,6 +31,7 @@ const Navigationbar = forwardRef((props, ref) => {
 
 
   return (
+    
     <nav
     ref={ref}
     css={[
@@ -48,10 +50,11 @@ const Navigationbar = forwardRef((props, ref) => {
           `
     ]}
   >
+   
     <ul>
       <li>
-        <a href="/">
-          <img alt='' height="175" src={logo} />
+        <a href="/search">
+          <img style={{paddingTop: "60px"}} alt='' height="190" src={logo} />
         </a>
       </li>
 
@@ -64,13 +67,16 @@ const Navigationbar = forwardRef((props, ref) => {
 
     <ul className="right">
       <li>
-        <Icon type="search" />
+      <Link to='/Search'> <Icon type="search" /> </Link> 
       </li>
+      
       <li>
         <Icon type="bell-o" />
       </li>
     </ul>
+   
   </nav>
+  
 )
 })
 

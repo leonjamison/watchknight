@@ -18,10 +18,10 @@ const initialRow = {
 }
 
 const categories = [
-  'Top Picks on WatchKnight',
+  'Top Picks',
   'Action',
-  'Drama',
-  'Comedy'
+  'Drama'
+  // 'Comedy'
   // 'Documentary'
   // 'Sci-Fi',
   // 'Romance'

@@ -38,7 +38,7 @@ const url = `https://www.youtube.com/watch?v=SJpgohJLMGg`
             Tony Stark must contend with both his declining health and a vengeful mad man with ties to his father's legacy.
             </p>
 
-            <Button icon="play"> Play</Button>
+            <Button icon="pause"> Pause</Button>
             <Button icon="info-circle"> More Info</Button>
           </div>
 
@@ -75,7 +75,7 @@ const url = `https://www.youtube.com/watch?v=SJpgohJLMGg`
     }
     .ContentRow {
       position: absolute;
-      bottom: 10px;
+      bottom: 5px;
     }
     .player-wrapper {
       position: relative;

@@ -33,7 +33,7 @@ const DetailPane = ({ category, top, setActive }) => {
         <div className="pane-wrapper">
           <img alt=''
             css={css`
-              max-width: ${tab === 'Overview' ? 110 : 110}px;
+              max-width: ${tab === 'Overview' ? 85 : 85}px;
             `}
             src={logo}
           />

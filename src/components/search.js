@@ -3,12 +3,15 @@ import React from 'react'
 import Navigationbar from './navigationbar'
 import { Global, css} from '@emotion/core'
 import searchbackground from '../img/searchbackground.jpg'
-import { Link } from 'react-router-dom'
-import Dbmovielist from './DbMovieList'
+import DbMovieDetails from './DbMovieDetails'
+import DbMovieList from './DbMovieList'
 import SearchForm from './searchform'
 
 
-const backend_api = `http://localhost:3001`
+
+
+
+// const backend_api = `http://localhost:3001`
 // const movie_db = `https://api.themoviedb.org/3/movie/popular?api_key=e3c60fe73b55ea565cfda63e0c2faca6&language=en-US&page=1`
 // const search_api = `https://api.themoviedb.org/3/search/movie?api_key=${this.api_Key}&query=`
 
@@ -19,10 +22,15 @@ class Searchresults extends React.Component {
         movies: [],
         reviews: [],
         searchTerm: '',
+        movieDetails: [],
+        currentMovie: null,
+        comment:''
         
     }
 
     api_Key = process.env.REACT_APP_API
+
+   
 
     // componentDidMount(){
     //     // this.getMovies()
@@ -39,11 +47,12 @@ class Searchresults extends React.Component {
         this.setState({movies: [...movies.results]})})
     }
 
-    getReviews=()=>{
-        fetch(`${backend_api}/reviews`)
-        .then(r => r.json())
-        .then(reviews => this.setState({reviews: reviews}))
-    }
+    // getReviews=()=>{
+    //     // fetch(`${backend_api}/reviews`)
+    //     fetch(`https://api.themoviedb.org/3/review/${review_id}?api_key=${this.api.key}`)
+    //     .then(r => r.json())
+    //     .then(reviews => this.setState({reviews: reviews}))
+    // }
 
     handleChange=(e)=>{
         this.setState({[e.target.name]: e.target.value})
@@ -57,38 +66,46 @@ class Searchresults extends React.Component {
         .then(movies =>  {
             console.log(movies)
         this.setState({movies: [...movies.results]})})
-        // this.setState({
-        //     searchTerm: ''
-        // })
+      
+    }
+
+    viewMovieDetails=(movieId)=>{
+    const details_api = `https://api.themoviedb.org/3/movie/${movieId}?api_key=${this.api_Key}&language=en-US`
+    fetch(details_api)
+    .then(r=>r.json())
+    .then(details => this.setState({ movieDetails: details}))
+     const filteredMovie = this.state.movies.filter(movie => movie.id === movieId)
+     const newCurrentMovie = filteredMovie.length > 0 ? filteredMovie[0] : null
+     this.setState({currentMovie: newCurrentMovie }) 
+     
+        
     }
 
 
+    closeMovieInfo = () =>{
+      this.setState({currentMovie: null})
+    }
+
+    clearComment=()=>{
+      this.setState({comments: ''})
+    }
+
+  
+
     render(){
-        // console.log('search state:', this.state)
+
         return(
 
             
             <div>
                 <Global styles={GlobalCSS} />
                 <Navigationbar/>
-                   
-                 <SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-
-                {/* <h1 style={{position: "relative", fontSyle: 'bold',}}>Search Movie Here</h1> */}
-                
-                {/* <form style={{paddingTop: '150px', paddingLeft: '400px'}}>
-                    <input style={{fontSize: 'large', paddingRight: '90px', paddingLeft: '90px'}}
-                    name='searchTerms' 
-                    placeholder='Search For Movie' 
-                    onChange={this.handleChange} />
-                    <button style={{position: 'float'}} onClick={this.handleSubmit} type='submit'>Search</button>
-                </form> */}
-    
-                {/* <button style={{position: 'absolute'}}><Link to='/'>Go Home</Link></button> */}
-
-                <Dbmovielist movies={this.state.movies} reviews={this.state.reviews}/>
-                
+                {this.state.currentMovie === null ?  <div><SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}/> 
+                 <DbMovieList viewMovieDetails={this.viewMovieDetails} movies={this.state.movies} /> </div> : <DbMovieDetails comments={this.clearComment} details={this.state.movieDetails} currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/> }  
+            
+               
             </div>
+            
         )
 
     }

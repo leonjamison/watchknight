@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 import Icon from './icon'
 
 
-const leftLinks = ['Home', 'Series', 'Movies', 'Latest', 'Favorites']
+const leftLinks = ['Home', 'Series', 'Latest', 'Popular', 'Favorites']
 
 
 
@@ -72,6 +72,10 @@ const Navigationbar = forwardRef((props, ref) => {
       
       <li>
         <Icon type="bell-o" />
+      </li>
+
+      <li>
+      <Link to='/Login'> <Icon type="sign-out" /> </Link> 
       </li>
     </ul>
    

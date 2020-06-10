@@ -8,6 +8,7 @@ import Searchresults from './components/search';
 import DbMovieDetails from './components/DbMovieDetails';
 
 
+
 const Main = () => {
   return (
     <Switch> {/* The Switch decides which component to show based on the current URL.*/}
@@ -15,6 +16,7 @@ const Main = () => {
       <Route exact path='/Login' component={Login}></Route>
       <Route exact path='/Search' component={Searchresults} />
       <Route exact path='/Movie' component={DbMovieDetails} />
+     
     </Switch>
   );
 }

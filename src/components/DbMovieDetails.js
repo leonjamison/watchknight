@@ -10,11 +10,11 @@ import Icon from './icon'
 
 
 const DbMovieDetails = (props) => {
-    console.log('dbmoviedetails props:', props)
-//  const {title, closeMovieInfo, currentMovie, release_date, overview} = props
+    console.log('dbmoviedetails props:', props.details.genres)
+
  function clickAlert(){
  
-  alert('Comment Has Been Submitted For Approval!')
+  alert('Comment Has Been Submitted For Review!')
   
 }
 
@@ -35,11 +35,12 @@ const DbMovieDetails = (props) => {
             </div> 
               <div className='col s12 m8'>
                   <div className='info-container'>
-                    <p style={{fontWeight: "bolder"}}> {props.currentMovie.title}</p>
+                    <h5 style={{fontWeight: "bolder"}}> <Icon type='film'/>  {props.currentMovie.title}</h5>
+                    <span>{props.details.tagline}</span>
                     <hr/>
                     <span>Release Date: {props.currentMovie.release_date.substring(6).split("-").concat(props.currentMovie.release_date.substring(0, 4)).join("/")}</span>
                     <br/>
-                    <span>Runtime: {props.details.runtime} Minutes</span>
+                    <span> RunTime: {props.details.runtime} Minutes</span>
                     <br/>
                     <br/>
                     <span> <Icon type='money'/> Film Budget: $ {props.details.budget}</span>
@@ -47,9 +48,9 @@ const DbMovieDetails = (props) => {
                     <span> <Icon type='ticket'/> Film Revenue: $ {props.details.revenue}</span>
                    
                     
-                    <p>Film Plot</p>
+                    <p>Plot</p>
                     <p>{props.currentMovie.overview}</p>
-                    <span style={{paddingLeft: '475px'}}> {props.currentMovie.vote_count} Likes <Icon type='thumbs-up'/> </span>
+                    <span style={{paddingLeft: '475px'}}> {props.currentMovie.vote_count} Likes  <Icon type='thumbs-up'/> </span>
                   </div>
                     <div>
                     <p> Comments <Icon type='comments'/> </p>

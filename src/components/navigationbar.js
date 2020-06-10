@@ -30,6 +30,8 @@ const Navigationbar = forwardRef((props, ref) => {
 
 
 
+
+
   return (
     
     <nav
@@ -70,7 +72,7 @@ const Navigationbar = forwardRef((props, ref) => {
       <Link to='/Search'> <Icon type="search" /> </Link> 
       </li>
       
-      <li>
+      <li onClick={() => bellClick()}>
         <Icon type="bell-o" />
       </li>
 
@@ -83,6 +85,10 @@ const Navigationbar = forwardRef((props, ref) => {
   
 )
 })
+
+const bellClick=()=>{
+  alert('No new notifications at this time...')
+}
 
 
 const NavigationbarCSS = css`

@@ -20,11 +20,10 @@ class Searchresults extends React.Component {
 
     state={
         movies: [],
-        reviews: [],
         searchTerm: '',
         movieDetails: [],
-        currentMovie: null,
-        comment:''
+        currentMovie: null
+        
         
     }
 
@@ -47,12 +46,8 @@ class Searchresults extends React.Component {
         this.setState({movies: [...movies.results]})})
     }
 
-    // getReviews=()=>{
-    //     // fetch(`${backend_api}/reviews`)
-    //     fetch(`https://api.themoviedb.org/3/review/${review_id}?api_key=${this.api.key}`)
-    //     .then(r => r.json())
-    //     .then(reviews => this.setState({reviews: reviews}))
-    // }
+
+
 
     handleChange=(e)=>{
         this.setState({[e.target.name]: e.target.value})
@@ -81,6 +76,8 @@ class Searchresults extends React.Component {
         
     }
 
+  
+
 
     closeMovieInfo = () =>{
       this.setState({currentMovie: null})
@@ -101,7 +98,7 @@ class Searchresults extends React.Component {
                 <Global styles={GlobalCSS} />
                 <Navigationbar/>
                 {this.state.currentMovie === null ?  <div><SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}/> 
-                 <DbMovieList viewMovieDetails={this.viewMovieDetails} movies={this.state.movies} /> </div> : <DbMovieDetails comments={this.clearComment} details={this.state.movieDetails} currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/> }  
+                 <DbMovieList viewMovieDetails={this.viewMovieDetails} movies={this.state.movies} /> </div> : <DbMovieDetails details={this.state.movieDetails} currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/> }  
             
                
             </div>
@@ -199,6 +196,31 @@ const GlobalCSS = css`
     }
   }
   }
+
+   h5 {
+    animation-duration: 2s;
+    animation-name: slidein;
+    animation-iteration-count: 1;
+
+  }
+
+  @keyframes slidein {
+    from {
+      margin-left: 100%;
+      width: 300%; 
+    }
+  
+    to {
+      margin-left: 0%;
+      width: 100%;
+    }
+  }
+
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+}
+
 
 
 

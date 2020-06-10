@@ -18,9 +18,9 @@ const initialRow = {
 }
 
 const categories = [
-  'Top Picks',
-  'Action',
-  'Drama'
+  'Popular Movies'
+  // 'Action',
+  // 'Drama'
   // 'Comedy'
   // 'Documentary'
   // 'Sci-Fi',

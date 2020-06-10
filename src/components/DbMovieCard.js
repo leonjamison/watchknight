@@ -6,7 +6,7 @@ import Icon from './icon'
 
 const DbMovieCard = (props) => {
     // let {image, viewMovieDetails, vote_average, popularity, vote_count, movieID} = props
-    console.log('dbmoviecard props:', props)
+    // console.log('dbmoviecard props:', props)
     return(
             <div className='col s12 m6 l3' style={{paddingBottom: '20px'}}>
                 <div className='card'>
@@ -21,15 +21,11 @@ const DbMovieCard = (props) => {
                     </div>
                 </div>
                     <div className='card-content'>
-                    
+                        <span> <Icon type='star'/>  Popularity Rating: {props.pop_rating}  </span>
+                        <br/>
                         <span><Icon type='star'/> IMDB Rating: {props.rating} </span>
                         <br/>
-                        <span> <Icon type='star'/>  Popularity Rating: {props.pop_rating}  </span>
-                        {/* <span> <Icon type='star'/> Popularity Rating: {popularity}</span> */}
-                        {/* <span> <Icon type='thumbs-up'/>  Likes: {vote_count}</span> */}
-                        <br/>
                         <hr/>
-                        {/* <p> <a href='#' onClick={() => props.viewMovieDetails(props.movieId)} >View Details</a> </p> */}
                     </div>
             </div>
             

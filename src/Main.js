@@ -6,6 +6,7 @@ import App from './App'
 import Login from './components/Login';
 import Searchresults from './components/search';
 import DbMovieDetails from './components/DbMovieDetails';
+import User from './components/user'
 
 
 
@@ -15,7 +16,8 @@ const Main = () => {
       <Route exact path='/' component={App}></Route>
       <Route exact path='/Login' component={Login}></Route>
       <Route exact path='/Search' component={Searchresults} />
-      <Route exact path='/Movie' component={DbMovieDetails} />
+      <Route exact path='/Movie/:id' component={DbMovieDetails} />
+      <Route exact path='/favorites' component={User}></Route>
      
     </Switch>
   );

@@ -22,10 +22,11 @@ const Episodes = () => (
           <Icon type="play" />
         </Movie>
 
-        <p>Scene {++i} </p>
+        <p>  Preview Scene {++i}  <Icon type='share-square'/>  </p>
         <p>
-        Ramona teaches Destiny to start men off with a single, then a double, then a triple and then back to a double and back to a single. 
-        Ramona and Destiny hit the floor, they are in control.
+       {/* Summary: Ramona teaches Destiny to start men off with a single, then a double, then a triple and then back to a double and back to a single.  */}
+         Hustlers is a must see comedy! Learn more here on WatchKnight today.
+           
         </p>
 
       </div>

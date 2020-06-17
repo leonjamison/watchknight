@@ -2,6 +2,7 @@
 // import React from 'react'
 import { css, jsx } from '@emotion/core'
 import Button from '../button'
+import image2 from '../../img/image2.jpg'
 
 
 /**
@@ -9,7 +10,8 @@ import Button from '../button'
  */
 const Overview = () => (
   <div css={OverviewCSS}>
-    
+    <h5>HUSTLERS</h5>
+    <hr/>
     <p>
     Working as a stripper to make ends meet, Destiny's life changes forever when she becomes friends with Ramona -- the club's top money earner.
     Ramona soon shows Destiny how to finagle her way around the wealthy Wall Street clientele who frequent the club. 
@@ -28,7 +30,7 @@ const OverviewCSS = css`
     margin-right: 10.5px;
   }
   p {
-    font-size: 18px;
+    font-size: 15px;
   }
   button {
     padding: 0.5em 2em;
@@ -36,6 +38,12 @@ const OverviewCSS = css`
   }
   button:first-of-type {
     background: #ff0a16;
+  }
+  img{
+    position: relative;
+    max-width: 200px
+    
+    
   }
 `
 

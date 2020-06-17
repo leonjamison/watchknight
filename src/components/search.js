@@ -6,12 +6,13 @@ import searchbackground from '../img/searchbackground.jpg'
 import DbMovieDetails from './DbMovieDetails'
 import DbMovieList from './DbMovieList'
 import SearchForm from './searchform'
+import User from './user'
 
 
 
 
 
-// const backend_api = `http://localhost:3001`
+const backend_api = `http://localhost:3001/movies`
 // const movie_db = `https://api.themoviedb.org/3/movie/popular?api_key=e3c60fe73b55ea565cfda63e0c2faca6&language=en-US&page=1`
 // const search_api = `https://api.themoviedb.org/3/search/movie?api_key=${this.api_Key}&query=`
 
@@ -22,19 +23,16 @@ class Searchresults extends React.Component {
         movies: [],
         searchTerm: '',
         movieDetails: [],
-        currentMovie: null
+        currentMovie: null,
+        favorite: [],
+        video: []
         
         
     }
 
     api_Key = process.env.REACT_APP_API
 
-   
 
-    // componentDidMount(){
-    //     // this.getMovies()
-    //     this.getReviews()
-    // }
 
     //Functions to fetch data
     getMovies=()=>{
@@ -45,6 +43,38 @@ class Searchresults extends React.Component {
             console.log(movies)
         this.setState({movies: [...movies.results]})})
     }
+
+    getVideo=(movieId)=>{
+      fetch(`https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${this.api_Key}&language=en-US`)
+      .then(r=>r.json())
+      .then(video => {this.setState({video: [video.results[0]] })})
+    }
+
+    addFavorite=()=>{
+    
+    alert('Movie Added To Favorites!')
+
+    let newMovie = this.state.currentMovie
+    //  console.log('Movie added to Fav:',newMovie)
+    let newFavMovie = {title: newMovie.title, poster_path: newMovie.poster_path, api_movie_key: newMovie.id, IMDB_rating: newMovie.vote_average, pop_rating: newMovie.popularity}
+      // console.log('favorite props:', newFavMovie)
+      fetch(backend_api, {
+          method: 'POST',
+          headers: 
+          {
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify(
+            newFavMovie
+           
+          )
+      })
+      .then(r => r.json())
+      .then(resObj => console.log(resObj))
+    
+  }
+
 
 
 
@@ -90,7 +120,7 @@ class Searchresults extends React.Component {
   
 
     render(){
-
+      // console.log('fav state:', this.props.favorite)
         return(
 
             
@@ -98,8 +128,8 @@ class Searchresults extends React.Component {
                 <Global styles={GlobalCSS} />
                 <Navigationbar/>
                 {this.state.currentMovie === null ?  <div><SearchForm handleChange={this.handleChange} handleSubmit={this.handleSubmit}/> 
-                 <DbMovieList viewMovieDetails={this.viewMovieDetails} movies={this.state.movies} /> </div> : <DbMovieDetails details={this.state.movieDetails} currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/> }  
-            
+                 <DbMovieList viewMovieDetails={this.viewMovieDetails} movies={this.state.movies} viewVideo={this.getVideo} /> </div> : <DbMovieDetails video={this.state.video} addFav={this.addFavorite} details={this.state.movieDetails} currentMovie={this.state.currentMovie} closeMovieInfo={this.closeMovieInfo}/> }  
+              
                
             </div>
             
@@ -221,7 +251,18 @@ const GlobalCSS = css`
     border-radius: 50%;
 }
 
+.player-wrapper {
+  position: relative;
+  padding-top: 56.6% /* Player ratio: 100 / (1280 / 720) */
 
+  
+}
+ 
+.react-player {
+  position: absolute;
+  top: 5%;
+  left: 0%;
+}
 
 
 

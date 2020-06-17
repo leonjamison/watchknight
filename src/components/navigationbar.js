@@ -55,14 +55,14 @@ const Navigationbar = forwardRef((props, ref) => {
    
     <ul>
       <li>
-        <a href="/search">
+        <a href="/">
           <img style={{paddingTop: "60px"}} alt='' height="190" src={logo} />
         </a>
       </li>
 
       {leftLinks.map(link => (
         <li key={link}>
-          <a href="/">{link}</a>
+          <a href="/favorites">{link}</a>
         </li>
       ))}
     </ul>

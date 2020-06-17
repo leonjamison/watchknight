@@ -21,7 +21,7 @@ const DbMovieList = (props) => {
                          date={movie.release_date}
                          rating={movie.vote_average}
                          pop_rating={movie.popularity}
-                        
+                         video={props.viewVideo}
                          
                          />)
                     })

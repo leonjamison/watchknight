@@ -3,6 +3,8 @@ import {Link} from 'react-router-dom'
 import Icon from './icon'
 import { Global, css} from '@emotion/core'
 import login5 from '../img/login5.gif'
+import LoginButton from './login-button.js'
+import SignupButton from './signup-button'
 
 
 class Login extends React.Component{
@@ -30,21 +32,15 @@ class Login extends React.Component{
                     <div className="container-row">
                             <form className="col s12">
                             <div className="row">
-                            <h4 style={{paddingLeft: '230px'}}> <Icon type='eye'/> WatchKnight <Icon type='eye'/></h4>
-                               
-                                <div className="input-field col s6">
-    
-                             <input style={{fontWeight: "bolder", fontSizeAdjust: 20}} value={this.state.Username} onChange={this.handleChange} id="icon_prefix" type="text" className="Username" placeholder='Username'/>
-                                    <label></label>
-                                </div>
-                                <div className="input-field col s6" >
-                                    <input style={{fontWeight: "bolder", fontSizeAdjust: 20}} value={this.state.password} onChange={this.handleChange} type="password" className="password" placeholder='Password' />
-                                    <label></label>
-                                </div>
-                                <Link to= '/'> <button>Login</button> </Link> 
-                                
+                            <h4 style={{paddingLeft: '230px'}}> WATCHKNIGHT </h4>
+
+                              <div className='row' style={{paddingLeft: 245, paddingTop: 70}}>
+                                <Icon  type='user-plus'/> <SignupButton /> 
+                                <Icon type='sign-in'/> <LoginButton />
+                                 
+                              </div>
+
                             </div>
-                          
                             </form>
                     </div>
                 </div>

@@ -8,7 +8,8 @@ import Icon from './icon'
 
 import { useAuth0 } from '@auth0/auth0-react'
 import LogoutButton from './logout-button'
-import LoginButton from './login-button'
+
+
 
 
 const leftLinks = ['Popular', 'Series', 'Favorites']
@@ -79,9 +80,8 @@ const Navigationbar = forwardRef((props, ref) => {
         <Icon type="bell-o" />
       </li>
 
-      <li>
-      <Link to='/Login'> <Icon type="sign-out" /> </Link> 
-      </li>
+      <LogoutButton />
+   
     </ul>
    
   </nav>

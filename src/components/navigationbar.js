@@ -6,16 +6,19 @@ import logo from '../img/logo.png'
 import { Link } from 'react-router-dom'
 import Icon from './icon'
 
+import { useAuth0 } from '@auth0/auth0-react'
+import LogoutButton from './logout-button'
+import LoginButton from './login-button'
 
-const leftLinks = ['Home', 'Series', 'Latest', 'Popular', 'Favorites']
+
+const leftLinks = ['Popular', 'Series', 'Favorites']
 
 
 
-/**
- * @function Navigationbar
- */
+
 const Navigationbar = forwardRef((props, ref) => {
   const [scrolled, setScrolled] = useState(false)
+  const { isAuthenticated } = useAuth0();
 
   useEffect(() => {
     const handleScroll = () =>

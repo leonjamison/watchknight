@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import Icon from './icon'
 import { Global, css} from '@emotion/core'
 import login5 from '../img/login5.gif'
-import logo from '../img/logo.png'
+
 
 class Login extends React.Component{
 

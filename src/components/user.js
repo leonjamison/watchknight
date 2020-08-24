@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import DbMovieCard from './DbMovieCard'
+// import { Link } from 'react-router-dom'
+// import DbMovieCard from './DbMovieCard'
 import DbMovieList from './DbMovieList'
 import { Global, css} from '@emotion/core'
 import searchbackground from '../img/searchbackground.jpg'

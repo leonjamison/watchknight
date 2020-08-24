@@ -1,24 +1,15 @@
 import React from 'react'
-// import DbMovieCard from './DbMovieCard'
-// import Navigationbar from './navigationbar'
-// import { Global, css} from '@emotion/core'
-// import searchbackground from '../img/searchbackground.jpg'
+
 import Icon from './icon'
 import ReactPlayer from 'react-player'
-// import { Redirect } from 'react-router'
-const backend_api=`http://localhost:3001/movies`
+
+// const backend_api=`http://localhost:3001/movies`
 
 
 
 
 const DbMovieDetails = (props) => {
     console.log('dbmoviedetails props:', props.currentMovie)
-
-  // const Cast = props.credits.slice(0,6)
-  // console.log(Cast)
-
-
-
 
 
 
@@ -65,7 +56,7 @@ const DbMovieDetails = (props) => {
                     <br/>
                   
                    
-                    
+    
                     <p>Plot</p>
                     <p>{props.currentMovie.overview}</p>
                     <span style={{paddingLeft: '0px'}}> <Icon type='thumbs-up'/> Likes: {props.currentMovie.vote_count}  </span>
@@ -81,7 +72,7 @@ const DbMovieDetails = (props) => {
                             className='react-player'
                             url={`https://www.youtube.com/watch?v=${video.key}`}
                             volume={1}
-                            muted={false}
+                            muted={true}
                             playing= {true}
                             controls={true}
                             width='375%'

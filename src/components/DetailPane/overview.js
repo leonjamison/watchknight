@@ -2,7 +2,7 @@
 // import React from 'react'
 import { css, jsx } from '@emotion/core'
 import Button from '../button'
-import image2 from '../../img/image2.jpg'
+// IMPORT STATEMENT FROM '.../BUTON'
 
 
 /**

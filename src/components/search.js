@@ -6,9 +6,6 @@ import searchbackground from '../img/searchbackground.jpg'
 import DbMovieDetails from './DbMovieDetails'
 import DbMovieList from './DbMovieList'
 import SearchForm from './searchform'
-import User from './user'
-
-
 
 
 

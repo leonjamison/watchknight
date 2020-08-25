@@ -7,7 +7,7 @@ import Login from './components/Login';
 import Searchresults from './components/search';
 import DbMovieDetails from './components/DbMovieDetails';
 import User from './components/user'
-
+import Profile from './components/Profile'
 
 
 const Main = () => {
@@ -18,6 +18,7 @@ const Main = () => {
       <Route exact path='/Search' component={Searchresults} />
       <Route exact path='/Movie/:id' component={DbMovieDetails} />
       <Route exact path='/favorites' component={User}></Route>
+      <Route exact path='/profile' component={Profile}></Route>
      
     </Switch>
   );
